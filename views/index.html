@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LINKKUMPUL - List Tugas </title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="judul">LIST KUMPUL TUGAS MAHASISWA</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>NAMA</th>
+                    <th>LINK KUMPUL TUGAS</th>
+                    <th>WAKTU KUMPUL</th>
+                    <th>KETERANGAN</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ range .category }}
+                <tr>
+                    <td>{{ .NAMA}}</td>
+                    <td><a href="{{ .LINKTUGAS}}" target="blank">{{ .LINKTUGAS}}</a></td>
+                    <td>{{ .WAKTUKUMPUL}}</td>
+                    <td>
+                        <a href="/delete?id={{ .ID }}" class="btn"
+                            onclick="return confirm('Apakah tugas ini telah selesai diperiksa?')">SELESAI DIPERIKSA</a>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+        <a href="/create" class="add-btn">KUMPUL - TUGAS</a>
+    </div>
+</body>
+</html>
